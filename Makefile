@@ -1,10 +1,13 @@
-CC = gcc-4.9
-CFLAGS = -O2 -fopenmp
+CC = armclang
+CFLAGS = -Ofast -fopenmp -mcpu=native -DSTREAM_ARRAY_SIZE=1073741824 -DNTIMES=20
+#1073741824 -DNTIMES=20
+#-mcpu=native -fopenmp -DSTREAM_ARRAY_SIZE=1073741824 -DNTIMES=20
 
-FC = gfortran-4.9
+FC = gfortran
 FFLAGS = -O2 -fopenmp
 
-all: stream_f.exe stream_c.exe
+all: stream_c.exe 
+	#stream_f.exe stream_c.exe
 
 stream_f.exe: stream.f mysecond.o
 	$(CC) $(CFLAGS) -c mysecond.c

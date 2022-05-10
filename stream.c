@@ -91,7 +91,7 @@
  *          per array.
  */
 #ifndef STREAM_ARRAY_SIZE
-#   define STREAM_ARRAY_SIZE	10000000
+#   define STREAM_ARRAY_SIZE  10000000
 #endif
 
 /*  2) STREAM runs each kernel "NTIMES" times and reports the *best* result
@@ -105,11 +105,11 @@
  */
 #ifdef NTIMES
 #if NTIMES<=1
-#   define NTIMES	10
+#   define NTIMES	20
 #endif
 #endif
 #ifndef NTIMES
-#   define NTIMES	10
+#   define NTIMES	20
 #endif
 
 /*  Users are allowed to modify the "OFFSET" variable, which *may* change the
@@ -176,9 +176,18 @@
 #define STREAM_TYPE double
 #endif
 
+
+/**
 static STREAM_TYPE	a[STREAM_ARRAY_SIZE+OFFSET],
 			b[STREAM_ARRAY_SIZE+OFFSET],
 			c[STREAM_ARRAY_SIZE+OFFSET];
+
+
+*/
+
+static STREAM_TYPE * a;
+static STREAM_TYPE * b;
+static STREAM_TYPE * c;
 
 static double	avgtime[4] = {0}, maxtime[4] = {0},
 		mintime[4] = {FLT_MAX,FLT_MAX,FLT_MAX,FLT_MAX};
@@ -215,6 +224,28 @@ main()
     double		t, times[4][NTIMES];
 
     /* --- SETUP --- determine precision and check timing --- */
+    
+     size_t const size = sizeof(STREAM_TYPE) * (STREAM_ARRAY_SIZE + OFFSET);
+     a = (STREAM_TYPE*)malloc(size);
+     b = (STREAM_TYPE*)malloc(size);
+     c = (STREAM_TYPE*)malloc(size);
+    
+     /** 
+     if (NULL == (*a = (STREAM_TYPE*)malloc(size))) {     
+       fprintf(stderr, "Failed to allocated %zd bytes for a\n", size);     
+       exit(1);   
+     }   
+     
+     if (NULL == (*b = (STREAM_TYPE*)malloc(size))) {     
+       fprintf(stderr, "Failed to allocated %zd bytes for b\n", size);     
+       exit(1);   
+     }   
+     
+     if (NULL == (*c = (STREAM_TYPE*)malloc(size))) {     
+       fprintf(stderr, "Failed to allocated %zd bytes for c\n", size);     
+       exit(1);   
+     }
+    */
 
     printf(HLINE);
     printf("STREAM version $Revision: 5.10 $\n");
