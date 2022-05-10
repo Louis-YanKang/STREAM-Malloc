@@ -1,4 +1,6 @@
 CC = armclang
+#gcc
+#fujitsu
 CFLAGS = -Ofast -fopenmp -mcpu=native -DSTREAM_ARRAY_SIZE=1073741824 -DNTIMES=20
 #1073741824 -DNTIMES=20
 #-mcpu=native -fopenmp -DSTREAM_ARRAY_SIZE=1073741824 -DNTIMES=20
