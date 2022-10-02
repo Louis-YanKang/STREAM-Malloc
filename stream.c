@@ -352,9 +352,9 @@ int main(int argc, char ** argv)
     {
         LIKWID_MARKER_REGISTER("stream_triad");
     }   
-        times[2][0] = omp_get_wtime();
+        times[3][0] = omp_get_wtime();
         stream_triad(scalar, a, b, c);
-        times[2][0] = omp_get_wtime() - times[2][0];
+        times[3][0] = omp_get_wtime() - times[3][0];
     
 
     LIKWID_MARKER_CLOSE;
