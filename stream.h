@@ -44,16 +44,16 @@
 #define __STREAM_H__
 
 #ifndef STREAM_ARRAY_SIZE
-#define STREAM_ARRAY_SIZE 10000000
+//#define STREAM_ARRAY_SIZE 10000000
 #endif
 
 #ifdef NTIMES
 #if NTIMES<=1
-#define NTIMES 1
+#define NTIMES 10
 #endif
 #endif
 #ifndef NTIMES
-//#define NTIMES 10
+#define NTIMES 10
 #endif
 
 #ifndef OFFSET

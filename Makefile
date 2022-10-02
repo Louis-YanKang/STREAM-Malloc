@@ -21,7 +21,7 @@ include config.mk
 
 # Total memory: 24GiB
 STREAM_ARRAY_SIZE = 1073741824
-NTIMES = 1
+NTIMES = 10
 
 # Runtime parameters
 OMP_ENV = OMP_NUM_THREADS=48 
